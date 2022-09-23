@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Nutella",
+        "price": 3.50,
+        "quantity": 2
+    },
+    {
+        "id": 2,
+        "name": "Prince Chocolat biscuits",
+        "price": 2.50,
+        "quantity": 3
+    },
+    {
+        "id": 3,
+        "name": "Volvic - 1,5 L",
+        "price": 0.80,
+        "quantity": 6
+    },
+    {
+        "id": 4,
+        "name": "Pain de mie Harrys",
+        "price": 2.10,
+        "quantity": 1
+    },
+    {
+        "id": 5,
+        "name": "Biscottes heudebert",
+        "price": 1.99,
+        "quantity": 1
+    },
+    {
+        "id": 6,
+        "name": "Yaourt nature - Danone",
+        "price": 2.30,
+        "quantity": 1
+    }
+]
