@@ -5,21 +5,23 @@
     </div>
   </template>
   
+
+
   <script>
     export default {
       props: {
-        stars: {
+        "stars": {
           type: Number,
           required: true
         }
       },
       data: function() {
         return {
-          maxStars: 5
+          "maxStars": 5
         }
       },
       computed: {
-        'emptyStars': function() {
+        "emptyStars": function() {
           return this.maxStars - this.stars;
         }
       }
