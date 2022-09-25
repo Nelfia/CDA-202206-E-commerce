@@ -27,3 +27,11 @@
       }
     }
   </script>
+
+
+<style>
+  .fa-star {
+    color: gold;
+    text-shadow: 0px 1px 3px goldenrod;
+  }
+</style>

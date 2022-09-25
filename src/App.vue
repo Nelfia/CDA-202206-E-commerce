@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <my-products :products="products"></my-products>
+    <!-- <my-products :products="products"></my-products> -->
     <!-- <my-product :id="2" :products="products"></my-product> -->
-    <!-- <my-cart></my-cart> -->
+    <my-cart></my-cart>
   </div>
 </template>
 

@@ -48,11 +48,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  padding: 0.5rem 0.5rem;
+  gap: 8px;
+}
+
+.produit h2 {
+  margin-bottom: 0;
 }
 
 .produit img {
-  width: 15vw;
+  max-width: 15vw;
   height: 15vw;
   object-fit: contain;
 }
@@ -63,5 +69,6 @@ export default {
   background-color: gold;
   border-radius: 5px;
   padding: 1rem;
+  box-shadow: 0px 2px 5px goldenrod;
 }
 </style>

@@ -1,17 +1,15 @@
 <template>
     <!-- v-if ici pour attendre la donnée envoyée par le parent (et potentiellement venant d'un serveur) -->
-    <div v-if="product">  
+    <div v-if="product" class="product-card">
         <h1>{{ product.name }}</h1>
-        <p> {{ product.description }}</p>
-        <div>
-            <b>Prix:</b> {{ product.price }} €
-        </div>
-        <div>
-            <my-stars :stars="product.stars"></my-stars>
-        </div>
-        <div>
+        <my-stars :stars="product.stars"></my-stars>
+
+        <article class="produit">
             <img :src="product.img" />
-        </div>
+            <p> {{ product.description }}</p>
+            <b>Prix: </b>{{ product.price }} €/unité
+        </article>
+
     </div>
 </template>
   
@@ -36,3 +34,24 @@ export default {
     }
 }
 </script>
+
+
+<style>
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-card h1 {
+    margin-bottom: 0;
+    margin-top: 2rem;
+}
+
+.product-card img {
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px lightgrey;
+}
+</style>
