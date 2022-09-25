@@ -5,23 +5,33 @@
     </div>
   </template>
   
+
+
   <script>
     export default {
       props: {
-        stars: {
+        "stars": {
           type: Number,
           required: true
         }
       },
       data: function() {
         return {
-          maxStars: 5
+          "maxStars": 5
         }
       },
       computed: {
-        'emptyStars': function() {
+        "emptyStars": function() {
           return this.maxStars - this.stars;
         }
       }
     }
   </script>
+
+
+<style>
+  .fa-star {
+    color: gold;
+    text-shadow: 0px 1px 3px goldenrod;
+  }
+</style>
