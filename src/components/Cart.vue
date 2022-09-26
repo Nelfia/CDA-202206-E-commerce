@@ -2,7 +2,11 @@
     <div>
         <h1> Votre Panier </h1>
 
-        <my-cart-products :lines="lines"></my-cart-products>
+        <my-cart-products 
+            v-if="lines" :lines="lines"
+            @update-lines="updateLines"
+        ></my-cart-products>
+
         <my-totaux :lines="lines"></my-totaux>
     </div>
 </template>
@@ -12,7 +16,8 @@
 export default {
     data: function () {
         return {
-            lines: []
+            lines: [],
+            updatedLines: []
         }
     },
     created: function () {
@@ -22,6 +27,12 @@ export default {
                 this.lines = data
             })
             .catch(error => console.error(error))
+    },
+    methods: {
+        updateLines: function (payload) {
+            console.log(payload)
+            this.updatedLines = payload.localLines
+        }
     }
 }
 </script>
