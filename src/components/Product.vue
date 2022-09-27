@@ -17,19 +17,25 @@
 
 <script>
 export default {
-    props: {
-        id: {
-            "type": Number,
-            required: true
-        },
-        products: {
-            type: Array,
-            required: true
-        }
-    },
+    data: function () {
+    return {
+      products: [],
+    }
+  },
+  created: function () {
+    fetch("/public/products.json")
+      .then(response => response.json())
+      .then((data) => {
+        this.products = data;
+      })
+      .catch(error => console.error(error))
+  },
     computed: { // Récupère le bon produit grâce à l'ID sélectionné
         product: function () {
             return this.products.find(product => product.id == this.id);
+        },
+        id: function() {
+            return this.$route.params.id
         }
     }
 }

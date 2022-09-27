@@ -4,7 +4,7 @@
 
         <my-cart-products 
             v-if="lines" :lines="lines"
-            @update-lines="updateLines"
+            @update-lines="manageUpdatedLines"
         ></my-cart-products>
 
         <my-totaux :lines="lines"></my-totaux>
@@ -16,8 +16,7 @@
 export default {
     data: function () {
         return {
-            lines: [],
-            updatedLines: []
+            lines: []
         }
     },
     created: function () {
@@ -27,15 +26,18 @@ export default {
                 this.lines = data
             })
             .catch(error => console.error(error))
+            
     },
     methods: {
-        updateLines: function (payload) {
+        manageUpdatedLines: function(payload) {
             console.log(payload)
-            this.updatedLines = payload.localLines
+            this.lines = payload.localLines
         }
     }
 }
 </script>
+
+
 
 <style>
     *{

@@ -14,7 +14,7 @@
                 <tr v-for="(line, index) in localLines">
                     <td>{{ line.name }}</td>
                     <td>{{ line.price }} € HT</td>
-                    <td>x <input type="number" min="0" v-model="line.quantity"></td>
+                    <td>x <input type="number" min=0 v-model=line.quantity></td>
                     <td>{{ getTotal(line) }} € HT</td>
                     <td><button @click="removeLine(index)">X</button></td>
                 </tr>
@@ -33,27 +33,35 @@ export default {
             required: true
         }
     },
-    data: function() {
+    data: function () {
         return {
             localLines: []
         }
     },
     methods: {
         getTotal(line) {
-            return line.total = Math.round((line.price * line.quantity) * 100 ) / 100
+            return line.total = Math.round((line.price * line.quantity) * 100) / 100
         },
         removeLine(index) {
             this.lines.splice(index, 1)
-        }
+        },
     },
     watch: {
-        lines: function() {
-            this.localLines = Object.assign({},this.lines);
+        lines: {
+            handler: function (newLines, oldLines) {
+                if (JSON.stringify(newLines) !== JSON.stringify(oldLines)) {
+                    this.localLines = JSON.parse(JSON.stringify(this.lines))
+                }
+            },
+            deep: true
         },
-        localLines: function (){
-            this.$emit("update-lines", { localLines: this.localLines })
+        localLines: {
+            handler: function (newLines) {
+                    this.$emit("update-lines", { 'localLines': this.localLines })
+                }
+            },
+            deep: true
         }
-    }
 }
 
 </script>
