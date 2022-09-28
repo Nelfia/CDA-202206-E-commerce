@@ -62,6 +62,7 @@ export default {
 }
 
 .produit {
+  cursor: pointer;
   width: 30vw;
   height: 40vh;
   box-shadow: 0px 0px 5px lightgrey;
@@ -72,6 +73,12 @@ export default {
   justify-content: center;
   padding: 0.5rem 0.5rem;
   gap: 8px;
+}
+
+.produit:hover {
+  transform: scale3d(1.1,1.1,1.1);
+  transition: 0.2s;
+  backdrop-filter: blur(5px);
 }
 
 .produit h2 {

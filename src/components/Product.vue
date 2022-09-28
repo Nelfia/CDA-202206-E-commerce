@@ -6,8 +6,8 @@
         <h1>{{ product.name }}</h1>
         <my-stars :stars="product.stars"></my-stars>
 
-        <article class="produit">
-            <button @click="goPreviousPage" class="previous"><img src="https://img.icons8.com/glyph-neue/64/000000/double-left.png"/></button>
+        <article class="product">
+            <div @click="goPreviousPage" class="previous"><img src="https://img.icons8.com/glyph-neue/64/000000/double-left.png"/></div>
             <img :src="product.img" />
             <p> {{ product.description }}</p>
             <b>Prix: </b>{{ product.price }} €/unité
@@ -58,30 +58,39 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
 .product-card h1 {
     margin-bottom: 0;
     margin-top: 2rem;
 }
 
-.produit {
+.product {
     position: relative;
 }
 
-.produit img {
+.product img {
     border-radius: 4px;
+    width: 30vw;
+    max-height: 40vw;
+    object-fit: contain;
 }
 
-.produit .previous img {
+.product .previous img {
     position: absolute;
     top: -4vw;
     left: -4rem;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(7px);
     border-radius: 50%;
-    box-shadow: 0px 0px 3px grey;
+    box-shadow: 2px 2px 5px grey;
     width: 90px;
     height: 90px;
     justify-content: center;
     align-items: center;
     display: flex;
 }
+
+.product .previous img:hover {
+    transform: scale3d(1.1,1.1,1.1);
+}
+
 </style>

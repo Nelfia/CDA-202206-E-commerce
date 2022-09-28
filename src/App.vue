@@ -3,8 +3,12 @@
     <!-- <my-products :products="products"></my-products> -->
     <!-- <my-product :id="2" :products="products"></my-product> -->
     <!-- <my-cart></my-cart> -->
-    <router-link to="/">Produits</router-link>
-    <router-link to="/cart">Panier</router-link>
+    <ul>
+      <li><router-link to="/">Produits</router-link></li>
+      <li><router-link to="/cart">Panier</router-link></li>
+    </ul>
+    
+    
 
     <router-view></router-view>
   </div>
@@ -51,5 +55,13 @@ export default {
   }
   .router-link-exact-active{
     border-bottom: 2px solid red;
+  }
+  ul {
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
   }
 </style>
