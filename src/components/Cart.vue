@@ -19,18 +19,32 @@ export default {
             lines: []
         }
     },
-    created: function () {
+    beforeRouteEnter: function (to, from, next) {
         fetch("/public/cart.json")
             .then(response => response.json())
             .then((data) => {
-                this.lines = data
+                if(data.length > 0) {
+                    next(vm => vm.lines = data)
+                } else {
+                    next(false)
+                }
             })
-            .catch(error => console.error(error))
-            
+            .catch(error => next(error))
     },
     methods: {
         manageUpdatedLines: function(payload) {
+            console.log(payload)
             this.lines = payload.localLines
+        }
+    },
+    watch: {
+        lines: {
+            handler: function(){
+                if(this.lines.length === 0) {
+                    this.$router.push({name: 'products'})
+                }
+            },
+            deep: true
         }
     }
 }

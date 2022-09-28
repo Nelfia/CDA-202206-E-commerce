@@ -7,13 +7,13 @@
 
     <div id="products-container">
 
-      <div v-for="product in products" class="produit">
+      <div v-for="product in products" class="produit" @click="goToProduct(product)">
         <h2> {{ product.name }} </h2>
           <my-stars :stars="product.stars"></my-stars>
 
         <img :src="product.img" alt="image du produit">
         <div id="price"> 
-          {{ product.price }} € <button @click="goToProduct(product.id)">+ d'infos</button>
+          {{ product.price }} €
         </div>
       </div>
     </div>
@@ -30,17 +30,18 @@ export default {
       products: []
     }
   },
-  created: function () {
+  beforeRouteEnter: function (to, from, next) {
     fetch("/public/products.json")
       .then(response => response.json())
       .then((data) => {
-        this.products = data;
+        next(vm => vm.products = data)
       })
       .catch(error => console.error(error))
   },
   methods: {
-    goToProduct: function (id){
-      this.$route.params.id = id
+    goToProduct: function (product){
+      let path = "product/" + product.id
+      this.$router.push(path)
     }
   }
 }
@@ -52,6 +53,12 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+#products-container .infos {
+  border: none;
+  border-radius: 5px;
+  margin-left: 1rem;
 }
 
 .produit {

@@ -26,9 +26,21 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
-      { path: '/', component: Products },
-      { path: '/product/:id', component: Product },
-      { path: '/cart', component: Cart }
+      { 
+        name: 'products',
+        path: '/', 
+        component: Products 
+      },
+      { 
+        name: 'product',
+        path: '/product/:id', 
+        component: Product 
+      },
+      { 
+        name: 'cart',
+        path: '/cart', 
+        component: Cart 
+      }
   ]
 })
 

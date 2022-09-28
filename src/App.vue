@@ -4,7 +4,6 @@
     <!-- <my-product :id="2" :products="products"></my-product> -->
     <!-- <my-cart></my-cart> -->
     <router-link to="/">Produits</router-link>
-    <router-link to="/product/:id">Infos produit</router-link>
     <router-link to="/cart">Panier</router-link>
 
     <router-view></router-view>
@@ -47,5 +46,10 @@ export default {
   }
   #app a {
     text-align: center;
+    width: fit-content;
+    text-decoration: none;
+  }
+  .router-link-exact-active{
+    border-bottom: 2px solid red;
   }
 </style>
