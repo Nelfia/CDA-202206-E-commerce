@@ -12,7 +12,9 @@
           <my-stars :stars="product.stars"></my-stars>
 
         <img :src="product.img" alt="image du produit">
-        <div id="price"> {{ product.price }} € </div>
+        <div id="price"> 
+          {{ product.price }} € <button @click="goToProduct(product.id)">+ d'infos</button>
+        </div>
       </div>
     </div>
 
@@ -35,6 +37,11 @@ export default {
         this.products = data;
       })
       .catch(error => console.error(error))
+  },
+  methods: {
+    goToProduct: function (id){
+      this.$route.params.id = id
+    }
   }
 }
 </script>

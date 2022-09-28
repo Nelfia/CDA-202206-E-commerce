@@ -11,7 +11,7 @@
                     <td>{{ tva }} €</td>
                 </tr>
                 <tr>
-                    <td>Livraison 
+                    <td>Livraison : 
                         <select name="delivery-choice" id="delivery-choice" v-model="delivery">
                             <option disabled>--Choisissez un mode de livraison --</option>
                             <option value=20.00>à domicile (20€)</option>

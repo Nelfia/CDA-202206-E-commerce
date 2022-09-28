@@ -30,7 +30,6 @@ export default {
     },
     methods: {
         manageUpdatedLines: function(payload) {
-            console.log(payload)
             this.lines = payload.localLines
         }
     }
