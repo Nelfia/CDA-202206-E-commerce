@@ -11,7 +11,7 @@
                     <td>{{ tva }} €</td>
                 </tr>
                 <tr>
-                    <td>Livraison 
+                    <td>Livraison : 
                         <select name="delivery-choice" id="delivery-choice" v-model="delivery">
                             <option disabled>--Choisissez un mode de livraison --</option>
                             <option value=20.00>à domicile (20€)</option>
@@ -46,12 +46,17 @@ export default {
     },
     computed: {
         "tva": function () {
-            return Math.round((this.ht * 0.2) * 100 )/ 100
+            return this.getMonneyNumber(this.ht * 0.2)
         },
         "ttc": function () {
             let totalTtc = this.ht + this.tva + parseFloat(this.delivery)
-            totalTtc = Math.round(totalTtc * 100) / 100
+            totalTtc = this.getMonneyNumber(totalTtc)
             return totalTtc
+        }
+    },
+    methods : {
+        getMonneyNumber: function (number) {
+            return Math.round(number*100) / 100
         }
     },
     watch: {
@@ -60,7 +65,7 @@ export default {
                 this.ht = 0
                 this.lines.forEach(line => {
                     this.ht += parseFloat(line.total)
-                    this.ht = Math.round(this.ht * 100) / 100
+                    this.ht = this.getMonneyNumber(this.ht)
                 })
             },
             deep: true

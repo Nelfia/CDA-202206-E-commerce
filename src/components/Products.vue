@@ -7,12 +7,14 @@
 
     <div id="products-container">
 
-      <div v-for="product in products" class="produit">
+      <div v-for="product in products" class="produit" @click="goToProduct(product)">
         <h2> {{ product.name }} </h2>
           <my-stars :stars="product.stars"></my-stars>
 
         <img :src="product.img" alt="image du produit">
-        <div id="price"> {{ product.price }} € </div>
+        <div id="price"> 
+          {{ product.price }} €
+        </div>
       </div>
     </div>
 
@@ -23,10 +25,23 @@
 
 <script>
 export default {
-  props: {
-    "products": {
-      type: Array,
-      required: true
+  data: function () {
+    return {
+      products: []
+    }
+  },
+  beforeRouteEnter: function (to, from, next) {
+    fetch("/public/products.json")
+      .then(response => response.json())
+      .then((data) => {
+        next(vm => vm.products = data)
+      })
+      .catch(error => console.error(error))
+  },
+  methods: {
+    goToProduct: function (product){
+      let path = "product/" + product.id
+      this.$router.push(path)
     }
   }
 }
@@ -40,7 +55,14 @@ export default {
   gap: 10px;
 }
 
+#products-container .infos {
+  border: none;
+  border-radius: 5px;
+  margin-left: 1rem;
+}
+
 .produit {
+  cursor: pointer;
   width: 30vw;
   height: 40vh;
   box-shadow: 0px 0px 5px lightgrey;
@@ -51,6 +73,12 @@ export default {
   justify-content: center;
   padding: 0.5rem 0.5rem;
   gap: 8px;
+}
+
+.produit:hover {
+  transform: scale3d(1.1,1.1,1.1);
+  transition: 0.2s;
+  backdrop-filter: blur(5px);
 }
 
 .produit h2 {

@@ -21,7 +21,31 @@ Vue.component('my-cart-products', CartProducts)
 import Totaux from './components/Totaux.vue'
 Vue.component('my-totaux', Totaux)
 
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+  routes: [
+      { 
+        name: 'products',
+        path: '/', 
+        component: Products 
+      },
+      { 
+        name: 'product',
+        path: '/product/:id', 
+        component: Product 
+      },
+      { 
+        name: 'cart',
+        path: '/cart', 
+        component: Cart 
+      }
+  ]
+})
+
 // Touchez pas à ça pour l'instant on s'en fiche, ca marche on y touche pas :)
 new Vue({
+  router,
   render: (h) => h(App)
 }).$mount('#app')
